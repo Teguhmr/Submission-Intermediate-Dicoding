@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Submission Intermediate</string>
+    <string name="txt_invalid_email">Email tidak valid</string>
+    <string name="password_not_valid">Password harus 6 karakter atau lebih</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_back_login_with_your_data_that_your_entered_during_registration">Selamat datang kembali! Masuk dengan data Anda yang telah didaftarkan</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_your_password">Lupa password?</string>
+    <string name="login">Masuk</string>
+    <string name="txt_dicoding_story">Dicoding Story</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Nama</string>
+    <string name="create_new_account">Buat akun</string>
+    <string name="text_privacy_policy">Dengan membuat akun, Anda telah menyetujui Syarat dan Ketentuan yang berlaku.</string>
+    <string name="contentDescIV">photo_desc</string>
+    <string name="txt_title">Title</string>
+    <string name="txt_description">Description</string>
+    <string name="txt_add_story">Tambah cerita</string>
+    <string name="logout">Keluar</string>
+    <string name="txt_info">Informasi</string>
+    <string name="txt_image_description">Deskripsi gambar</string>
+    <string name="close">Tutup</string>
+    <string name="txt_upload">Unggah</string>
+    <string name="txt_camera">Kamera</string>
+    <string name="txt_gallery">Galeri</string>
+    <string name="appwidget_text">Dicoding Story</string>
+    <string name="empty_text">Kosong</string>
+    <string name="log_in">Log In</string>
+    <string name="email_is_required">Email wajib diisi</string>
+    <string name="welcome">Selamat datang</string>
+    <string name="password_is_required">Password wajib diisi</string>
+    <string name="err_email_or_password">Email atau password salah</string>
+    <string name="register_success">Akun berhasil terdaftar</string>
+    <string name="registered_as">Terdaftar sebagai</string>
+    <string name="please_log">Silahkan login dengan data anda</string>
+    <string name="upload_story">Unggah Cerita</string>
+    <string name="upload_success">Unggah berhasil</string>
+    <string name="please_insert_img_desc">Silahkan masukan gambar dan deskripsi</string>
+    <string name="language">Bahasa</string>
+    <string name="email_already">Email sudah ada</string>
+    <string name="upload_failed">Upload gagal</string>
+
+
+
+</resources>
