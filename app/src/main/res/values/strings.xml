@@ -41,6 +41,12 @@
     <string name="language">Language</string>
     <string name="email_already">Email already taken</string>
     <string name="upload_failed">Upload Failed</string>
+    <string name="menu_maps">Maps</string>
+    <string name="const_text_seconds_ago">second ago</string>
+    <string name="const_text_minutes_ago">minutes ago</string>
+    <string name="const_text_hours_ago">hours ago</string>
+    <string name="const_text_days_ago">days ago</string>
+    <string name="upload_on">2 minutes ago</string>
 
 
 </resources>

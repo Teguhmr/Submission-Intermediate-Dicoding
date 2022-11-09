@@ -14,6 +14,7 @@ import com.dicoding.submissionintermediatedicoding.data.story.Story
 import com.dicoding.submissionintermediatedicoding.databinding.StoryLayoutBinding
 import com.dicoding.submissionintermediatedicoding.ui.detail.DetailActivity
 import com.dicoding.submissionintermediatedicoding.utils.Constants
+import com.dicoding.submissionintermediatedicoding.utils.TimeStamp
 
 class StoryAdapter : RecyclerView.Adapter<StoryAdapter.ViewHolder>() {
     private val listStoryData = ArrayList<Story>()
@@ -27,6 +28,7 @@ class StoryAdapter : RecyclerView.Adapter<StoryAdapter.ViewHolder>() {
 
                 tvStoryName.text = "by ${story.name}"
                 tvStoryDesc.text = story.description
+                tvTimeline.text = TimeStamp.getTimelineUpload(itemView.context, story.createdAt)
 
                 storyLayoutRoot.setOnClickListener{
                     val intent = Intent(itemView.context, DetailActivity::class.java)
@@ -39,9 +41,7 @@ class StoryAdapter : RecyclerView.Adapter<StoryAdapter.ViewHolder>() {
 
                     val optionsCompat : ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                         itemView.context as Activity,
-                        Pair(storyImage, "photo"),
-                        Pair(tvStoryName, "name"),
-                        Pair(tvStoryDesc, "description")
+                        Pair(storyImage, "photo")
                     )
 
                     itemView.context.startActivity(intent, optionsCompat.toBundle())

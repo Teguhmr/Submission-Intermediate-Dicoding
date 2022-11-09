@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.dicoding.submissionintermediatedicoding.data.auth.UserLoginResponse
 import com.dicoding.submissionintermediatedicoding.data.auth.UserLoginResult
 import com.dicoding.submissionintermediatedicoding.data.auth.UserRegisterResponse
-import com.dicoding.submissionintermediatedicoding.data.remote.RetrofitConfig
+import com.dicoding.submissionintermediatedicoding.data.remote.api.RetrofitConfig
 import com.dicoding.submissionintermediatedicoding.utils.Resource
 import retrofit2.Call
 import retrofit2.Callback

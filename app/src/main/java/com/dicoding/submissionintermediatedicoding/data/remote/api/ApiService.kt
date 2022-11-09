@@ -1,4 +1,4 @@
-package com.dicoding.submissionintermediatedicoding.data.remote
+package com.dicoding.submissionintermediatedicoding.data.remote.api
 
 
 import com.dicoding.submissionintermediatedicoding.data.auth.UserLoginResponse

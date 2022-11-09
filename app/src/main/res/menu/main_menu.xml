@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/logoutMenu"
@@ -7,4 +8,11 @@
     <item
         android:id="@+id/settingLanguage"
         android:title="@string/language"/>
+    <item
+        android:id="@+id/swipeRefresh"
+        android:icon="@drawable/map"
+        android:title="@string/menu_maps"
+        app:iconTint="@color/white"
+        app:showAsAction="always" />
+
 </menu>

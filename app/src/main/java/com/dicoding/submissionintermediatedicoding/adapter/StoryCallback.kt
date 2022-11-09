@@ -16,8 +16,4 @@ class StoryCallback(private val oldList: ArrayList<Story>, private val newList: 
         return nameOld == nameNew && value == value1
     }
 
-    @Nullable
-    override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
-        return super.getChangePayload(oldItemPosition, newItemPosition)
-    }
 }

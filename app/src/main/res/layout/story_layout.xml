@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/storyLayoutRoot"
-    app:cardCornerRadius="@dimen/_10sdp"
     android:elevation="4dp"
-    android:layout_marginHorizontal="@dimen/_5sdp"
-    android:layout_marginTop="@dimen/_5sdp"
+    app:cardCornerRadius="@dimen/_6sdp"
+    android:layout_marginBottom="@dimen/_16sdp"
+    android:layout_marginHorizontal="@dimen/_9sdp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/story_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="400dp"
             android:transitionName="photo"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +35,7 @@
             android:layout_marginEnd="18dp"
             android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/secondary_text"
             android:maxLines="1"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
@@ -54,6 +55,7 @@
             android:fontFamily="@font/poppins_regular"
             android:textSize="@dimen/_9ssp"
             android:transitionName="name"
+            android:textColor="@color/secondary_text"
             android:layout_marginBottom="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,6 +63,17 @@
             app:layout_constraintStart_toStartOf="@+id/tv_storyDesc"
             app:layout_constraintTop_toBottomOf="@+id/tv_storyDesc"
             tools:text="@string/name" />
+
+        <TextView
+            android:id="@+id/tv_timeline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_9ssp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_storyDesc"
+            app:layout_constraintTop_toBottomOf="@+id/tv_storyDesc"
+            tools:text="@string/upload_on" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,7 +3,7 @@ package com.dicoding.submissionintermediatedicoding.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.submissionintermediatedicoding.data.remote.RetrofitConfig
+import com.dicoding.submissionintermediatedicoding.data.remote.api.RetrofitConfig
 import com.dicoding.submissionintermediatedicoding.data.story.AddStoryResponse
 import com.dicoding.submissionintermediatedicoding.utils.Resource
 import okhttp3.MultipartBody

@@ -42,7 +42,12 @@
     <string name="language">Bahasa</string>
     <string name="email_already">Email sudah ada</string>
     <string name="upload_failed">Upload gagal</string>
-
+    <string name="const_text_seconds_ago">detik yang lalu</string>
+    <string name="const_text_minutes_ago">menit yang lalu</string>
+    <string name="const_text_hours_ago">jam yang lalu</string>
+    <string name="const_text_days_ago">hari yang lalu</string>
+    <string name="menu_maps">Maps</string>
+    <string name="upload_on">uploaded 2 minutes ago</string>
 
 
 </resources>

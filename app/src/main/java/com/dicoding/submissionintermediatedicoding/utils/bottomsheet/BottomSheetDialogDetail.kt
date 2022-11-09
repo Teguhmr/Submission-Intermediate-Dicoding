@@ -15,7 +15,7 @@ class BottomSheetDialogDetail: BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val name = activity?.intent?.getStringExtra("NAME")
-        val desc = activity?.intent?.getStringExtra("DESC")
+        val desc = activity?.intent?.getStringExtra("DESCRIPTION")
 
         binding.apply {
             btnClose.setOnClickListener {
