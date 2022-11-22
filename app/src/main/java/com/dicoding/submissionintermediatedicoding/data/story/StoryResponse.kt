@@ -2,7 +2,7 @@ package com.dicoding.submissionintermediatedicoding.data.story
 
 data class StoryListResponse(
     val error: Boolean,
-    val listStory: ArrayList<Story>,
+    val listStory: List<Story>,
     val message: String
 )
 data class AddStoryResponse(

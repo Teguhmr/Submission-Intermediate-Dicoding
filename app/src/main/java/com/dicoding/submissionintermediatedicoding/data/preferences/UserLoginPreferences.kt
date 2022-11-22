@@ -2,7 +2,6 @@ package com.dicoding.submissionintermediatedicoding.data.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.dicoding.submissionintermediatedicoding.BuildConfig.PREF_NAME
 import com.dicoding.submissionintermediatedicoding.data.auth.UserSession
 

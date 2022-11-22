@@ -61,7 +61,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnUpload"
+        app:layout_constraintBottom_toTopOf="@+id/text_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -76,17 +76,28 @@
             android:lines="6"
             android:maxLines="6"
             android:scrollbars="vertical" />
-
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/text_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_location"
+        app:layout_constraintBottom_toTopOf="@+id/btnUpload"
+        android:textColor="@color/secondary_text"
+        android:clickable="true"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:focusable="true" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnUpload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20sdp"
         android:text="@string/txt_upload"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:cornerRadius="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

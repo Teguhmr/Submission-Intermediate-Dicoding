@@ -50,6 +50,18 @@
         app:layout_constraintTop_toBottomOf="@+id/text_detail_description"
         tools:text="@string/name" />
 
+    <TextView
+        android:id="@+id/text_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="@dimen/_10ssp"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_name"
+        app:layout_constraintTop_toBottomOf="@+id/text_name"
+        tools:text="@string/purwakarta_indonesia" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_close"
         android:layout_width="match_parent"
@@ -63,7 +75,7 @@
         app:cornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_name"
+        app:layout_constraintTop_toBottomOf="@+id/text_location"
         app:strokeColor="@color/grey"
         app:strokeWidth="@dimen/_1sdp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

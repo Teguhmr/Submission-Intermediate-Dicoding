@@ -48,6 +48,22 @@
     <string name="const_text_days_ago">hari yang lalu</string>
     <string name="menu_maps">Maps</string>
     <string name="upload_on">uploaded 2 minutes ago</string>
+    <string name="const_text_try_again">Coba Lagi</string>
+    <string name="home">Home</string>
+    <string name="content_description_icon_maps">icon maps</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="const_text_adapter_maps_default">Tampilan Default (Negara)</string>
+    <string name="const_text_adapter_maps_province">Sekitar Provinsi</string>
+    <string name="const_text_adapter_maps_city">Sekitar Kota</string>
+    <string name="const_text_adapter_maps_district">Sekitar Daerah</string>
+    <string name="const_text_adapter_maps_around">Sekitar Lokasi</string>
+    <string name="purwakarta_indonesia">Purwakarta, Indonesia</string>
+    <string name="const_lorem_ipsum">Can\'t Access Permission</string>
+    <string name="button_text_ok">OK</string>
+    <string name="UI_validation_permission_location">Silahkan izinkan akses lokasi di pengaturan.</string>
+    <string name="click_to_detail">(Klik untuk detail cerita)</string>
+    <string name="add_location">📌 Tambahkan lokasi</string>
+    <string name="get_location_data">Menautkan lokasi, silahkan tunggu..</string>
 
 
 </resources>

@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.dicoding.submissionintermediatedicoding.MainActivity
 import com.dicoding.submissionintermediatedicoding.R
 import com.dicoding.submissionintermediatedicoding.data.auth.UserSession
@@ -79,7 +78,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun initVM(){
-        authViewModel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
+        authViewModel = (activity as AuthActivity).getAuthViewModel()
 
         authViewModel.usrLogin.observe(viewLifecycleOwner) {
             when (it.status) {

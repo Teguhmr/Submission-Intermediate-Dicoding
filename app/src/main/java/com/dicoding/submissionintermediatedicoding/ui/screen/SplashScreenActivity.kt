@@ -13,7 +13,6 @@ import com.dicoding.submissionintermediatedicoding.MainActivity
 import com.dicoding.submissionintermediatedicoding.R
 import com.dicoding.submissionintermediatedicoding.data.preferences.UserLoginPreferences
 import com.dicoding.submissionintermediatedicoding.ui.auth.AuthActivity
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {

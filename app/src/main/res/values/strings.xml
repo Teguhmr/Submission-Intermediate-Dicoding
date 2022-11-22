@@ -47,6 +47,22 @@
     <string name="const_text_hours_ago">hours ago</string>
     <string name="const_text_days_ago">days ago</string>
     <string name="upload_on">2 minutes ago</string>
+    <string name="const_text_try_again">Try Again</string>
+    <string name="home">Home</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="content_description_icon_maps">icon maps</string>
+    <string name="const_text_adapter_maps_default">Default View (Country)</string>
+    <string name="const_text_adapter_maps_province">Around My Province</string>
+    <string name="const_text_adapter_maps_city">Around My City</string>
+    <string name="const_text_adapter_maps_district">Around My District</string>
+    <string name="const_text_adapter_maps_around">Around My Location</string>
+    <string name="purwakarta_indonesia">Purwakarta, Indonesia</string>
+    <string name="const_lorem_ipsum">Can\'t Access Permission</string>
+    <string name="button_text_ok">OK</string>
+    <string name="UI_validation_permission_location">Please give the app access to read your location.</string>
+    <string name="click_to_detail">(Click to detail story)</string>
+    <string name="add_location">📌 Add Location</string>
+    <string name="get_location_data">Getting your location, please wait</string>
 
 
 </resources>

@@ -5,37 +5,30 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/image_error"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        app:lottie_rawRes="@raw/empty"
-        app:lottie_speed="1.5"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        android:visibility="gone"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
     <include
         android:id="@+id/shimmer_effect"
         layout="@layout/shimmer_effect_layout"
         />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_story"
-        android:layout_margin="4dp"
-        android:padding="4dp"
-        android:clipToPadding="false"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/story_layout" />
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_story"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/story_layout" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_addStory"
@@ -54,5 +47,21 @@
         android:contentDescription="@string/txt_add_story"
         android:focusable="true" />
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_toMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/txt_add_story"
+        android:transitionName="fab"
+        app:backgroundTint="@color/primary"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/fab_addStory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/grey"
+        app:srcCompat="@drawable/ic_explore"
+        app:tint="@color/white"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

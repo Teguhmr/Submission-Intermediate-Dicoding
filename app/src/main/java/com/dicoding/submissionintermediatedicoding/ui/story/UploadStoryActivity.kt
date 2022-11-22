@@ -1,26 +1,35 @@
 package com.dicoding.submissionintermediatedicoding.ui.story
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.lifecycle.ViewModelProvider
 import com.dicoding.submissionintermediatedicoding.MainActivity
 import com.dicoding.submissionintermediatedicoding.R
 import com.dicoding.submissionintermediatedicoding.data.preferences.UserLoginPreferences
+import com.dicoding.submissionintermediatedicoding.data.remote.api.RetrofitConfig
 import com.dicoding.submissionintermediatedicoding.databinding.ActivityUploadStoryBinding
+import com.dicoding.submissionintermediatedicoding.ui.map.MapsActivity
+import com.dicoding.submissionintermediatedicoding.utils.Constants
+import com.dicoding.submissionintermediatedicoding.utils.LocationMaps
 import com.dicoding.submissionintermediatedicoding.utils.Status
 import com.dicoding.submissionintermediatedicoding.utils.progress.ProgressDialog
 import com.dicoding.submissionintermediatedicoding.utils.story.UploadStoryUtilities
 import com.dicoding.submissionintermediatedicoding.utils.story.UploadStoryUtilities.reduceFileImage
-import com.dicoding.submissionintermediatedicoding.viewmodel.UploadImageViewModel
+import com.dicoding.submissionintermediatedicoding.viewmodel.UploadStoryViewModel
+import com.dicoding.submissionintermediatedicoding.viewmodel.ViewModelStoryFactory
 import com.shashank.sony.fancytoastlib.FancyToast
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -31,14 +40,13 @@ import java.io.File
 
 class UploadStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUploadStoryBinding
-
-    private lateinit var uploadViewModel: UploadImageViewModel
-
     private lateinit var progressDialog: ProgressDialog
     private lateinit var currentPath: String
     private lateinit var usrLoginPref: UserLoginPreferences
-
     private var getFile: File? = null
+    private var _latitude: Double? = null
+    private var _longitude: Double? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload_story)
@@ -58,8 +66,70 @@ class UploadStoryActivity : AppCompatActivity() {
             btnUpload.setOnClickListener {
                 uploadStory()
             }
+
+            textLocation.setOnClickListener {
+                getMyLocationToShare()
+            }
         }
 
+    }
+
+
+    private fun isLocationEnabled(): Boolean {
+        val locationManager: LocationManager =
+            this.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    }
+    private val getMyLocLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val lat = it.data?.getDoubleExtra(Constants.LAT, 0.0)
+                val lng = it.data?.getDoubleExtra(Constants.LNG, 0.0)
+                _latitude = lat
+                _longitude = lng
+                binding.textLocation.text = LocationMaps.parseAddressLocation(this,
+                    lat ?: 0.0, lng?: 0.0)
+            }
+        }
+
+    private fun getMyLocationToShare() {
+        if (!isLocationEnabled()) {
+            showLocationNotEnabledDialog()
+        } else {
+            FancyToast.makeText(
+                this@UploadStoryActivity,
+                getString(R.string.get_location_data),
+                FancyToast.LENGTH_LONG,
+                FancyToast.INFO,
+                false
+            ).show()
+            val intent = Intent(this@UploadStoryActivity, MapsActivity::class.java)
+            intent.putExtra("UPLOAD_REQUEST_CODE", MY_LOCATION_TO_SHARE)
+            getMyLocLauncher.launch(intent)
+        }
+    }
+
+    private fun showLocationNotEnabledDialog() {
+        AlertDialog.Builder(this@UploadStoryActivity).apply {
+            setTitle("Enable Location")
+            setMessage("Please Enable Location To Share Your Location")
+            setPositiveButton("Ok") { _, _ ->
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+            }
+            setNegativeButton("Cancel") { _, _ ->
+                FancyToast.makeText(
+                    this@UploadStoryActivity,
+                    "Location is not enabled",
+                    FancyToast.LENGTH_LONG,
+                    FancyToast.INFO,
+                    false
+                ).show()
+            }
+            create()
+            show()
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -154,7 +224,23 @@ class UploadStoryActivity : AppCompatActivity() {
             )
 
             val token = "Bearer ${usrLoginPref.getLoginData().token}"
-            uploadViewModel.uploadStory(token, imageMultipart, description)
+            if(_latitude != null && _longitude != null){
+                getAuthViewModel().uploadStory(
+                    token,
+                    imageMultipart,
+                    description,
+                    _latitude,
+                    _longitude
+                )
+            } else {
+                getAuthViewModel().uploadStory(
+                    token,
+                    imageMultipart,
+                    description,
+                    null,
+                    null
+                )
+            }
 
         } else {
             FancyToast.makeText(
@@ -169,8 +255,7 @@ class UploadStoryActivity : AppCompatActivity() {
     }
 
     private fun initVM(){
-        uploadViewModel = ViewModelProvider(this)[UploadImageViewModel::class.java]
-        uploadViewModel.storyUpload.observe(this) {
+        getAuthViewModel().storyUpload.observe(this) {
             when (it.status) {
                 Status.LOADING -> {
                     progressDialog.startProgressDialog()
@@ -204,9 +289,20 @@ class UploadStoryActivity : AppCompatActivity() {
             }
         }
     }
+    private fun getAuthViewModel(): UploadStoryViewModel {
+        val viewModel: UploadStoryViewModel by viewModels {
+            ViewModelStoryFactory(
+                this,
+                RetrofitConfig.getApiService()
+            )
+        }
+        return viewModel
+    }
 
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
+        const val MY_LOCATION_TO_SHARE = 11
+
     }
 }

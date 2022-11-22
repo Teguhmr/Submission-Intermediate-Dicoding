@@ -5,23 +5,30 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dicoding.submissionintermediatedicoding.data.preferences.UserLoginPreferences
 import com.dicoding.submissionintermediatedicoding.databinding.ActivityMainBinding
 import com.dicoding.submissionintermediatedicoding.ui.auth.AuthActivity
 import com.dicoding.submissionintermediatedicoding.ui.home.HomeFragment
+import com.dicoding.submissionintermediatedicoding.viewmodel.StoryPagerViewModel
+import com.dicoding.submissionintermediatedicoding.viewmodel.ViewModelStoryFactory
 
 class MainActivity : AppCompatActivity() {
-    lateinit var userLoginPref: UserLoginPreferences
+    private lateinit var userLoginPref: UserLoginPreferences
     private var mainActivityMainBinding: ActivityMainBinding? = null
+    private var homeFragment: HomeFragment? = null
+    private var token: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         userLoginPref = UserLoginPreferences(this)
-        moveToFragment(HomeFragment())
-    }
+        token = "Bearer ${userLoginPref.getLoginData().token}"
+        homeFragment = HomeFragment()
 
+        moveToFragment(homeFragment!!)
+    }
 
     private fun moveToFragment(fragment: Fragment){
         this.supportFragmentManager
@@ -50,6 +57,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
                 true
             }
+            R.id.home_up -> {
+                homeFragment!!.scrollToPosition()
+                true
+            }
             else -> {return super.onOptionsItemSelected(item)}
         }
     }
@@ -59,5 +70,13 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, AuthActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
+    }
+
+    fun getStoryViewModel(): StoryPagerViewModel {
+        val factory = ViewModelStoryFactory(this, null)
+        val viewModel: StoryPagerViewModel by viewModels {
+            factory
+        }
+        return viewModel
     }
 }

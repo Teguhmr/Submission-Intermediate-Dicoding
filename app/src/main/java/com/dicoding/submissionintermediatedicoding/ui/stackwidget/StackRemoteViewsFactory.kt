@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import android.util.Log
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import androidx.core.os.bundleOf
@@ -28,8 +27,6 @@ internal class StackRemoteViewsFactory(private var context: Context) :
             val imageBytes = Base64.decode(i, Base64.DEFAULT)
             val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
             widgetItems.add(image)
-            Log.e("Assla", widgetItems.toString())
-
         }
 
     }

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.dicoding.submissionintermediatedicoding.R
 import com.dicoding.submissionintermediatedicoding.data.preferences.UserLoginPreferences
 import com.dicoding.submissionintermediatedicoding.databinding.FragmentRegisterBinding
@@ -55,7 +54,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun initVM(){
-        authViewModel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
+        authViewModel = (activity as AuthActivity).getAuthViewModel()
         authViewModel.usrRegister.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING -> {
